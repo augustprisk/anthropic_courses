@@ -1,0 +1,242 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .summary-stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .stat-box {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                flex-basis: 30%;
+                min-width: 200px;
+            }
+            .stat-value {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th {
+                background-color: #4a4a4a;
+                color: white;
+                text-align: left;
+                padding: 12px;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: top;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .output-cell {
+                white-space: pre-wrap;
+            }
+            .score {
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+            .score-high {
+                background-color: #c8e6c9;
+                color: #2e7d32;
+            }
+            .score-medium {
+                background-color: #fff9c4;
+                color: #f57f17;
+            }
+            .score-low {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+            .output {
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+
+            .output pre {
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 0;
+                font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                font-size: 14px;
+                line-height: 1.4;
+                color: #333;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+
+            td {
+                width: 20%;
+            }
+            .score-col {
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box">
+                    <div>Total Test Cases</div>
+                    <div class="stat-value">3</div>
+                </div>
+                <div class="stat-box">
+                    <div>Average Score</div>
+                    <div class="stat-value">9.3 / 10</div>
+                </div>
+                <div class="stat-box">
+                    <div>Pass Rate (≥7)</div>
+                    <div class="stat-value">100.0%</div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Prompt Inputs</th>
+                    <th>Solution Criteria</th>
+                    <th>Output</th>
+                    <th>Score</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Testing with a interdisciplinary passage containing mixed topics from psychology, neuroscience, and sociology to verify accurate identification and separation of distinct conceptual domains</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent neuroimaging studies have demonstrated that social rejection activates the anterior insula and dorsal anterior cingulate cortex, brain regions typically associated with physical pain processing, suggesting a neurobiological basis for the phenomenological experience of emotional distress. This finding bridges neuroscience and psychology by revealing how social exclusion—a phenomenon extensively documented in sociological research on group dynamics and status hierarchies—produces measurable neural responses. Furthermore, longitudinal studies indicate that individuals with lower social capital and weak community ties exhibit both heightened inflammatory markers and reduced gray matter volume in empathy-related regions, linking sociological concepts of social isolation to both biological and psychological outcomes. The interplay between these domains reveals how cultural norms governing social acceptance, individual psychological resilience, and neural plasticity interact to shape human well-being across the lifespan.</td>
+                <td class="criteria">• Extracts topics from at least three distinct domains: neuroscience, psychology, and sociology<br>• Separates overlapping concepts into distinct topics (e.g., 'social rejection' as psychology vs. 'social capital' as sociology)<br>• Returns results as a JSON array of strings with no additional metadata or explanations</td>
+                <td class="output"><pre>```json
+[
+  "neuroimaging",
+  "social rejection",
+  "anterior insula",
+  "dorsal anterior cingulate cortex",
+  "physical pain processing",
+  "emotional distress",
+  "neuroscience",
+  "psychology",
+  "social exclusion",
+  "group dynamics",
+  "status hierarchies",
+  "longitudinal studies",
+  "social capital",
+  "community ties",
+  "inflammatory markers",
+  "gray matter volume",
+  "empathy",
+  "social isolation",
+  "cultural norms",
+  "social acceptance",
+  "psychological resilience",
+  "neural plasticity",
+  "human well-being"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">10</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it provides a JSON array of strings containing topics from the article, with only topic names and no extra commentary, and nothing else in the response. It meets all secondary criteria by extracting topics from neuroscience, psychology, and sociology domains, and by separating overlapping concepts into distinct entries. The extraction is thorough and well-organized. Minor weaknesses exist in the granularity of some entries, but these do not violate any stated criteria.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a dense technical passage from materials science containing specialized terminology, chemical compounds, and experimental methodologies to assess extraction of domain-specific topics versus general concepts</td>
+                <td class="prompt-inputs"><strong>content:</strong> We synthesized graphene oxide (GO) nanocomposites through a modified Hummers method, achieving lateral dimensions of 2-5 μm and oxygen-containing functional groups quantified via X-ray photoelectron spectroscopy (XPS). The GO sheets were subsequently reduced using hydrazine vapor at 100°C for 4 hours, yielding reduced graphene oxide (rGO) with electrical conductivity of 1.2 × 10³ S/m. Transmission electron microscopy (TEM) revealed wrinkled morphology characteristic of sp² hybridized carbon networks. The composite was then incorporated into a polydimethylsiloxane (PDMS) matrix via solution blending, with mechanical testing demonstrating 240% improvement in tensile strength compared to pristine PDMS. Thermogravimetric analysis (TGA) indicated thermal stability up to 380°C, while dynamic mechanical analysis (DMA) showed a 15°C increase in glass transition temperature (Tg) at 8 wt% filler loading.</td>
+                <td class="criteria">• Extracts domain-specific topics (chemical compounds, techniques, characterization methods) such as graphene oxide, Hummers method, XPS, TEM, PDMS, TGA, DMA, and rGO<br>• Includes experimental methodologies and material properties relevant to the materials science domain<br>• Avoids extracting generic terms like 'sheets', 'testing', or 'temperature' as standalone topics when they appear as descriptors rather than core subject matter</td>
+                <td class="output"><pre>```json
+[
+  "graphene oxide (GO)",
+  "nanocomposites",
+  "Hummers method",
+  "X-ray photoelectron spectroscopy (XPS)",
+  "reduced graphene oxide (rGO)",
+  "hydrazine vapor reduction",
+  "electrical conductivity",
+  "Transmission electron microscopy (TEM)",
+  "sp² hybridized carbon",
+  "polydimethylsiloxane (PDMS)",
+  "solution blending",
+  "tensile strength",
+  "Thermogravimetric analysis (TGA)",
+  "thermal stability",
+  "dynamic mechanical analysis (DMA)",
+  "glass transition temperature (Tg)",
+  "filler loading"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it provides a JSON array of strings containing topics from the article with no extra commentary. Regarding secondary criteria, it excellently extracts domain-specific topics and experimental methodologies while avoiding generic terms. The two minor weaknesses ('sp² hybridized carbon' and 'filler loading') are borderline cases that don't significantly detract from an otherwise comprehensive and well-curated topic extraction. The solution demonstrates strong understanding of materials science terminology and appropriate topic selection.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a humanities passage on literary theory containing abstract philosophical concepts, author names, and critical frameworks to evaluate handling of proper nouns, theoretical movements, and nuanced conceptual topics</td>
+                <td class="prompt-inputs"><strong>content:</strong> Derrida's deconstructionist approach fundamentally challenges the Western metaphysical tradition by interrogating the binary oppositions that structure logocentric discourse. His critique of presence and the trace concept reframes how we understand textuality and différance, concepts that have profoundly influenced poststructuralist literary criticism. Building on Saussure's semiotics, theorists like Barthes and Foucault extended these frameworks to examine how power relations are embedded within discursive formations and authorial authority. The New Historicism movement, emerging in the 1980s, synthesized these poststructuralist insights with Marxist materialism to demonstrate how literary texts are inextricably bound to their sociohistorical contexts, challenging the New Critical emphasis on aesthetic autonomy and close reading practices.</td>
+                <td class="criteria">• Identifies all proper nouns (philosopher/theorist names and critical movements)<br>• Captures abstract philosophical concepts and theoretical frameworks mentioned<br>• Distinguishes between individual concepts and broader intellectual movements<br>• Extracts topics without unnecessary duplication or overgeneralization</td>
+                <td class="output"><pre>```json
+[
+  "Derrida's deconstruction",
+  "Western metaphysical tradition",
+  "Binary oppositions",
+  "Logocentric discourse",
+  "Presence and trace",
+  "Textuality",
+  "Différance",
+  "Poststructuralist literary criticism",
+  "Saussure's semiotics",
+  "Barthes",
+  "Foucault",
+  "Power relations",
+  "Discursive formations",
+  "Authorial authority",
+  "New Historicism",
+  "Marxist materialism",
+  "Sociohistorical context",
+  "New Criticism",
+  "Aesthetic autonomy",
+  "Close reading"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it provides a valid JSON array of strings containing topics from the passage with no extraneous commentary. Against the secondary criteria, it successfully identifies all proper nouns (philosophers and movements), captures both abstract concepts and theoretical frameworks, and maintains appropriate distinction between individual concepts and broader movements. The extraction is comprehensive and avoids unnecessary duplication. Minor stylistic inconsistencies and some debatable granularity choices prevent a perfect score, but these are marginal issues that don't significantly impact the quality or usability of the output.</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    

@@ -1,0 +1,39 @@
+[
+  {
+    "prompt_inputs": {
+      "content": "Recent neuroimaging studies have demonstrated that social rejection activates the anterior insula and dorsal anterior cingulate cortex, brain regions typically associated with physical pain processing, suggesting a neurobiological basis for the phenomenological experience of emotional distress. This finding bridges neuroscience and psychology by revealing how social exclusion\u2014a phenomenon extensively documented in sociological research on group dynamics and status hierarchies\u2014produces measurable neural responses. Furthermore, longitudinal studies indicate that individuals with lower social capital and weak community ties exhibit both heightened inflammatory markers and reduced gray matter volume in empathy-related regions, linking sociological concepts of social isolation to both biological and psychological outcomes. The interplay between these domains reveals how cultural norms governing social acceptance, individual psychological resilience, and neural plasticity interact to shape human well-being across the lifespan."
+    },
+    "solution_criteria": [
+      "Extracts topics from at least three distinct domains: neuroscience, psychology, and sociology",
+      "Separates overlapping concepts into distinct topics (e.g., 'social rejection' as psychology vs. 'social capital' as sociology)",
+      "Returns results as a JSON array of strings with no additional metadata or explanations"
+    ],
+    "task_description": "\n    Extract topics out of a passage of text from a scholarly article into a JSON array of strings\n    ",
+    "scenario": "Testing with a interdisciplinary passage containing mixed topics from psychology, neuroscience, and sociology to verify accurate identification and separation of distinct conceptual domains"
+  },
+  {
+    "prompt_inputs": {
+      "content": "We synthesized graphene oxide (GO) nanocomposites through a modified Hummers method, achieving lateral dimensions of 2-5 \u03bcm and oxygen-containing functional groups quantified via X-ray photoelectron spectroscopy (XPS). The GO sheets were subsequently reduced using hydrazine vapor at 100\u00b0C for 4 hours, yielding reduced graphene oxide (rGO) with electrical conductivity of 1.2 \u00d7 10\u00b3 S/m. Transmission electron microscopy (TEM) revealed wrinkled morphology characteristic of sp\u00b2 hybridized carbon networks. The composite was then incorporated into a polydimethylsiloxane (PDMS) matrix via solution blending, with mechanical testing demonstrating 240% improvement in tensile strength compared to pristine PDMS. Thermogravimetric analysis (TGA) indicated thermal stability up to 380\u00b0C, while dynamic mechanical analysis (DMA) showed a 15\u00b0C increase in glass transition temperature (Tg) at 8 wt% filler loading."
+    },
+    "solution_criteria": [
+      "Extracts domain-specific topics (chemical compounds, techniques, characterization methods) such as graphene oxide, Hummers method, XPS, TEM, PDMS, TGA, DMA, and rGO",
+      "Includes experimental methodologies and material properties relevant to the materials science domain",
+      "Avoids extracting generic terms like 'sheets', 'testing', or 'temperature' as standalone topics when they appear as descriptors rather than core subject matter"
+    ],
+    "task_description": "\n    Extract topics out of a passage of text from a scholarly article into a JSON array of strings\n    ",
+    "scenario": "Testing with a dense technical passage from materials science containing specialized terminology, chemical compounds, and experimental methodologies to assess extraction of domain-specific topics versus general concepts"
+  },
+  {
+    "prompt_inputs": {
+      "content": "Derrida's deconstructionist approach fundamentally challenges the Western metaphysical tradition by interrogating the binary oppositions that structure logocentric discourse. His critique of presence and the trace concept reframes how we understand textuality and diff\u00e9rance, concepts that have profoundly influenced poststructuralist literary criticism. Building on Saussure's semiotics, theorists like Barthes and Foucault extended these frameworks to examine how power relations are embedded within discursive formations and authorial authority. The New Historicism movement, emerging in the 1980s, synthesized these poststructuralist insights with Marxist materialism to demonstrate how literary texts are inextricably bound to their sociohistorical contexts, challenging the New Critical emphasis on aesthetic autonomy and close reading practices."
+    },
+    "solution_criteria": [
+      "Identifies all proper nouns (philosopher/theorist names and critical movements)",
+      "Captures abstract philosophical concepts and theoretical frameworks mentioned",
+      "Distinguishes between individual concepts and broader intellectual movements",
+      "Extracts topics without unnecessary duplication or overgeneralization"
+    ],
+    "task_description": "\n    Extract topics out of a passage of text from a scholarly article into a JSON array of strings\n    ",
+    "scenario": "Testing with a humanities passage on literary theory containing abstract philosophical concepts, author names, and critical frameworks to evaluate handling of proper nouns, theoretical movements, and nuanced conceptual topics"
+  }
+]
